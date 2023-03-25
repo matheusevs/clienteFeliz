@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Auth::routes();
+Route::get('/', function(){
+    return redirect('/cliente');
+});
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cliente', 'ClientesController@index');
-Route::put('/cliente/editar/{id}', 'ClientesController@update');
+Route::put('/cliente/edit/{id}', 'ClientesController@update');
+Route::get('/cliente/edit/{id}', 'ClientesController@edit');
 Route::post('/cliente/create', 'ClientesController@store');
 Route::delete('/cliente/delete/{id}', 'ClientesController@destroy');
-Route::get('/home', 'HomeController@index')->name('home');

@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Validator;
 class ClientesController extends Controller
 {
 
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
 
     /**
      * Display a listing of the resource.
@@ -25,7 +25,7 @@ class ClientesController extends Controller
 
         $clientes = Clientes::all();
 
-        return view('listarClientes', ['clientes' => $clientes]);
+        return view('clientes', ['clientes' => $clientes]);
 
     }
 
@@ -53,9 +53,13 @@ class ClientesController extends Controller
             $cliente = new Clientes();
 
             foreach ($request->all() as $key => $value) {
-                
-                $cliente[$key] = $value;
 
+                if($key != '_token'){
+
+                    $cliente[$key] = $value;
+                
+                }
+                
             }  
 
             if (!$cliente->nome) {
@@ -80,7 +84,7 @@ class ClientesController extends Controller
         } catch (Exception $e){
 
             return response()->json([
-                'error' => false,
+                'error' => true,
                 'message' => $e->getMessage(),
             ]);
 
@@ -108,7 +112,7 @@ class ClientesController extends Controller
     public function edit($id)
     {
 
-        /*try{
+        try{
 
             if (!$id) {
                 return ['error' => true, 'message' => "ID do cliente não informado"];
@@ -127,7 +131,7 @@ class ClientesController extends Controller
                 'error' => false,
                 'message' => $e->getMessage(),
             ]);
-        }*/
+        }
 
     }
 
@@ -157,7 +161,7 @@ class ClientesController extends Controller
         } catch(Exception $e) {
 
             return response()->json([
-                'error' => false,
+                'error' => true,
                 'message' => $e->getMessage(),
             ]);
 
@@ -190,7 +194,7 @@ class ClientesController extends Controller
         } catch(Exception $e) {
 
             return response()->json([
-                'error' => false,
+                'error' => true,
                 'message' => $e->getMessage(),
             ]);
         }

@@ -22,7 +22,6 @@ class CreateClientesTable extends Migration
             $table->string('cep')->nullable();
             $table->string('cidade')->nullable();
             $table->string('endereco')->nullable();
-            $table->string('pais')->nullable();
             $table->timestamps();
         });
     }
