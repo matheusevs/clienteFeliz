@@ -17,8 +17,8 @@ class CreateClientesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nome');
             $table->string('dataDeNascimento')->nullable();
-            $table->string('cpfCnpj');
-            $table->string('email');
+            $table->string('cpfCnpj')->unique();;
+            $table->string('email')->unique();;
             $table->string('cep')->nullable();
             $table->string('cidade')->nullable();
             $table->string('endereco')->nullable();

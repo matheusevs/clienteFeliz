@@ -15,3 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Auth::routes();
+Route::get('/cliente', 'ClientesController@index');
+Route::put('/cliente/editar/{id}', 'ClientesController@update');
+Route::post('/cliente/create', 'ClientesController@store');
+Route::delete('/cliente/delete/{id}', 'ClientesController@destroy');
+Route::get('/home', 'HomeController@index')->name('home');

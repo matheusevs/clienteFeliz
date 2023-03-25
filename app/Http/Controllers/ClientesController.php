@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class ClientesController extends Controller
 {
+
+    /*public function __construct()
+    {
+        $this->middleware('auth');
+    }*/
+
     /**
      * Display a listing of the resource.
      *
@@ -18,6 +24,8 @@ class ClientesController extends Controller
     {
 
         $clientes = Clientes::all();
+
+        return view('listarClientes', ['clientes' => $clientes]);
 
     }
 
@@ -134,7 +142,7 @@ class ClientesController extends Controller
     {
 
         try{
-
+            
             if (!$request->id) {
                 return ['error' => true, 'message' => "ID do cliente não informado!"];
             }

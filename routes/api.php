@@ -18,8 +18,3 @@ use Illuminate\Http\Request;
 });*/
 
 
-Route::post('/cliente/create', 'ClientesController@store');
-Route::put('/cliente/edit/{id}', 'ClientesController@update');
-Route::delete('/client/edelete/{id}', 'ClientesController@destroy');
-Route::get('/cliente', 'ClientesController@index');
-//Route::get('/cliente/edit/{id}', 'ClientesController@edit');
