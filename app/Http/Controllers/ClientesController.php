@@ -25,7 +25,11 @@ class ClientesController extends Controller
 
         $clientes = Clientes::all();
 
-        return view('clientes', ['clientes' => $clientes]);
+        return response()->json([
+            'data' => $clientes
+        ]);
+
+        //return view('clientes', ['clientes' => $clientes]);
 
     }
 

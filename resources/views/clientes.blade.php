@@ -18,28 +18,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($clientes as $cliente)
-                <tr>
-                    <td>{{$cliente->id}}</td>
-                    <td>{{$cliente->nome}}</td>
-                    <td>{{$cliente->dataDeNascimento}}</td>
-                    <td>{{$cliente->cpfCnpj}}</td>
-                    <td>{{$cliente->email}}</td>
-                    <td>{{$cliente->endereco}}</td>
-                    <td>
-
-                            <button class="btn btn-primary btn-edit" style="display: inline;" value="{{$cliente->id}}"  data-bs-toggle="modal" data-bs-target="#editarClienteModal"> <i class="fas fa-edit"></i></button>
-                            <form class="formDelete" style="display: inline;">
-                                @csrf
-                                <input type="hidden" value="{{$cliente->id}}" name="idDelete"/>
-                                <button type="submit" class="btn btn-danger btn-delete"><i class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
+            
         </table>
 
         <div class="text-center">
@@ -156,16 +135,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalLabel">Confirmação de exclusão</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     Tem certeza que deseja excluir esse item?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <a href="#" class="btn btn-danger">Excluir</a>
+                    <button type="button" id="fecharExclusao" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <a href="#" id="btn-confirm-delete" class="btn btn-danger">Excluir</a>
                 </div>
             </div>
         </div>
