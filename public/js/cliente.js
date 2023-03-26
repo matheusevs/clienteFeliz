@@ -1,5 +1,9 @@
 $(function () {
 
+    let inputCpfCnpj = document.getElementById('cpfCnpj');
+    let inputCpfCnpjEditar = document.getElementById('cpfCnpjEditar');
+
+
     let tabela = $('#cliente-table').DataTable({
         dom: 'Bfrtip',
         buttons: [
@@ -216,6 +220,27 @@ $(function () {
         return data;
 
     }
+
+    function formatCPFCNPJ(cpfCnpjInput) {
+        let value = cpfCnpjInput.value.replace(/\D/g, '');
+      
+        if (value.length === 11) {
+
+            value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+        } else if (value.length === 14) {
+
+            value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
+
+        } else {
+
+            return cpfCnpjInput.value;
+
+        }
+      
+        cpfCnpjInput.value = value;
+        
+      }
     
     $("#fechar,#fecharIcone").on("click", event => {
         $('#name').val('');
@@ -237,6 +262,19 @@ $(function () {
         $('#cidadeEditar').val('');
         $('#enderecoEditar').val('');
         
+    });
+
+
+    inputCpfCnpj.addEventListener('input', () => {
+
+        formatCPFCNPJ(inputCpfCnpj);
+
+    });
+
+    inputCpfCnpjEditar.addEventListener('input', () => {
+
+        formatCPFCNPJ(inputCpfCnpjEditar);
+
     });
   
 });

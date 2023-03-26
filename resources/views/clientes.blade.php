@@ -41,7 +41,7 @@
                     <div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Nome</label>
-                            <input class="form-control" type="text" id="name" name="nome" required/>
+                            <input class="form-control" type="text" id="name" name="nome" placeholder="Digite seu Nome" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Data de nascimento</label>
@@ -49,23 +49,23 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cpfCnpj">CPF/CNPJ</label>
-                            <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" required/>
+                            <input class="form-control" type="text" id="cpfCnpj" name="cpfCnpj" maxlength="18" placeholder="Digite seu CPF" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="email">Email</label>
-                            <input class="form-control" type="email" id="email" name="email" required/>
+                            <input class="form-control" type="email" id="email" name="email" placeholder="Digite seu E-mail" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cep">CEP</label>
-                            <input class="form-control" type="text" id="cep" name="cep"/>
+                            <input class="form-control" type="text" id="cep" name="cep" placeholder="Digite seu CEP"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="city">Cidade</label>
-                            <input class="form-control" type="text" id="cidade" name="cidade"/>
+                            <input class="form-control" type="text" id="cidade" name="cidade" placeholder="Digite sua cidade"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="end">Endereço</label>
-                            <input class="form-control" type="text" id="endereco" name="endereco"/>
+                            <input class="form-control" type="text" id="endereco" name="endereco" placeholder="Digite seu endereço"/>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     <div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Nome/Razão Social</label>
-                            <input class="form-control" type="text" id="nameEditar" name="nome"/>
+                            <input class="form-control" type="text" id="nameEditar" name="nome" placeholder="Digite seu Nome"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Data de nascimento</label>
@@ -101,23 +101,23 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cpfCnpj">CNPJ/CPF</label>
-                            <input class="form-control" type="text" id="cpfCnpjEditar" name="cpfCnpj"/>
+                            <input class="form-control" type="text" id="cpfCnpjEditar" name="cpfCnpj" maxlength="18" placeholder="Digite seu CPF"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="email">Email</label>
-                            <input class="form-control" type="email" id="emailEditar" name="email"/>
+                            <input class="form-control" type="email" id="emailEditar" name="email" placeholder="Digite seu E-mail"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cep">CEP</label>
-                            <input class="form-control" type="text" id="cepEditar" name="cep"/>
+                            <input class="form-control" type="text" id="cepEditar" name="cep" placeholder="Digite seu CEP"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="city">Cidade</label>
-                            <input class="form-control" type="text" id="cidadeEditar" name="cidade"/>
+                            <input class="form-control" type="text" id="cidadeEditar" name="cidade" placeholder="Digite sua cidade"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="end">Endereço</label>
-                            <input class="form-control" type="text" id="enderecoEditar" name="endereco"/>
+                            <input class="form-control" type="text" id="enderecoEditar" name="endereco" placeholder="Digite seu endereço"/>
                         </div>
                     </div>
                 </div>
