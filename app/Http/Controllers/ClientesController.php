@@ -3,17 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Clientes;
+use App\Http\Requests\ClientesRequest;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class ClientesController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Display a listing of the resource.
@@ -29,7 +24,6 @@ class ClientesController extends Controller
             'data' => $clientes
         ]);
 
-        //return view('clientes', ['clientes' => $clientes]);
 
     }
 
@@ -46,10 +40,10 @@ class ClientesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ClientesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientesRequest $request)
     {
         
         try{
@@ -64,18 +58,6 @@ class ClientesController extends Controller
                 
                 }
                 
-            }  
-
-            if (!$cliente->nome) {
-                return ['error' => true, 'message' => "Nome não informado!"];
-            }
-            
-            if (!$cliente->cpfCnpj) {
-                return ['error' => true, 'message' => "CPF ou CNPJ não informado!"];
-            }
-    
-            if (!$cliente->email) {
-                return ['error' => true, 'message' => "E-mail não informado!"];
             }
     
             $cliente->save();
@@ -142,11 +124,10 @@ class ClientesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\clientes  $clientes
+     * @param  \Illuminate\Http\ClientesRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(ClientesRequest $request)
     {
 
         try{

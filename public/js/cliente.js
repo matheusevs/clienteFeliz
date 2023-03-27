@@ -3,6 +3,13 @@ $(function () {
     let inputCpfCnpj = document.getElementById('cpfCnpj');
     let inputCpfCnpjEditar = document.getElementById('cpfCnpjEditar');
 
+    let inputDate = document.getElementById('date');
+    let inputDateEditar = document.getElementById('dateEditar');
+
+    let inputCep = document.getElementById('cep');
+    let inputCepEditar = document.getElementById('cepEditar');
+
+    let dataAtual = new Date().toISOString().split("T")[0];
 
     let tabela = $('#cliente-table').DataTable({
         dom: 'Bfrtip',
@@ -20,10 +27,11 @@ $(function () {
                 if(data){
 
                     const date = new Date(data);
-                    const dia = date.getDate().toString().padStart(2, '0');
-                    const mes = (date.getMonth() + 1).toString().padStart(2, '0');
-                    const ano = date.getFullYear();
-                    const dataFormatada = `${dia}/${mes}/${ano}`;
+                    const dia = ('0' + date.getUTCDate()).slice(-2);
+                    const mes = ('0' + (date.getUTCMonth() + 1)).slice(-2);
+                    const ano = date.getUTCFullYear();
+                    const dataFormatada = `${dia}/${mes}/${ano}`; // concatena as partes da data no formato desejado
+
                     return dataFormatada;
                 
                 }
@@ -43,7 +51,8 @@ $(function () {
                         </form>`
                 }
             },
-        ]
+        ],
+        order: [[0, 'desc']],
     });
 
     $("#form").on("submit", event => {
@@ -65,7 +74,7 @@ $(function () {
             },
             dataType: 'json',
             contentType: 'application/json',
-            success: function(res) {
+            success: res => {
 
                 $("#fechar").click();
 
@@ -81,6 +90,14 @@ $(function () {
                     toastr.error(res.message,'Erro!');
 
                 }
+
+            }, 
+            error: error => {
+
+                const primeiraChave = Object.keys(error.responseJSON.errors)[0];
+                const mensagem = error.responseJSON.errors[primeiraChave];
+
+                toastr.error(mensagem,'Erro!');
 
             }
 
@@ -99,7 +116,7 @@ $(function () {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             contentType: 'application/json',
-            success: function(res) {
+            success: res => {
 
                 if(!res.error){
 
@@ -142,7 +159,7 @@ $(function () {
             data: data,
             dataType: 'json',
             contentType: 'application/json',
-            success: function(res) {
+            success: res => {
                 $("#fecharEditar").click();
 
                 if(!res.error){
@@ -156,6 +173,14 @@ $(function () {
                     toastr.error(res.message,'Erro!');
 
                 }
+
+            },
+            error: error => {
+
+                const primeiraChave = Object.keys(error.responseJSON.errors)[0];
+                const mensagem = error.responseJSON.errors[primeiraChave];
+
+                toastr.error(mensagem,'Erro!');
 
             }
 
@@ -179,7 +204,7 @@ $(function () {
                 },
                 dataType: 'json',
                 contentType: 'application/json',
-                success: function(res) {
+                success: res => {
 
                     id = '';
 
@@ -221,14 +246,15 @@ $(function () {
 
     }
 
-    function formatCPFCNPJ(cpfCnpjInput) {
+    function formatCPFCNPJ(cpfCnpjInput){
+
         let value = cpfCnpjInput.value.replace(/\D/g, '');
       
-        if (value.length === 11) {
+        if(value.length === 11){
 
             value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 
-        } else if (value.length === 14) {
+        } else if(value.length === 14){
 
             value = value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
 
@@ -240,7 +266,28 @@ $(function () {
       
         cpfCnpjInput.value = value;
         
+    }
+
+    function apenasNumeros(event){
+
+        let charCode = event.charCode ? event.charCode : event.keyCode;
+
+        if(charCode < 48 || charCode > 57){
+
+          return false;
+
+        }
+
+    }
+
+    function mascaraCep(cep){
+
+        cep = cep.replace(/\D/g, '');
+        cep = cep.replace(/^(\d{5})(\d)/, '$1-$2');
+        return cep;
+
       }
+      
     
     $("#fechar,#fecharIcone").on("click", event => {
         $('#name').val('');
@@ -264,6 +311,20 @@ $(function () {
         
     });
 
+    inputDate.max = dataAtual;
+    inputDateEditar.max = dataAtual;
+      
+    inputCpfCnpj.onkeypress = function (event) {
+    
+        return apenasNumeros(event);
+    
+    };
+
+    inputCpfCnpjEditar.onkeypress = function (event) {
+    
+        return apenasNumeros(event);
+    
+    };
 
     inputCpfCnpj.addEventListener('input', () => {
 
@@ -275,6 +336,22 @@ $(function () {
 
         formatCPFCNPJ(inputCpfCnpjEditar);
 
+    });
+
+    inputCep.addEventListener('input', function() {
+
+        const cep = inputCep.value.replace(/\D/g, '');
+      
+        inputCep.value = cep.replace(/^(\d{5})(\d{3})/, '$1-$2');
+
+      });
+
+    inputCepEditar.addEventListener('input', function() {
+        
+        const cep = inputCepEditar.value.replace(/\D/g, '');
+        
+        inputCepEditar.value = cep.replace(/^(\d{5})(\d{3})/, '$1-$2');
+    
     });
   
 });

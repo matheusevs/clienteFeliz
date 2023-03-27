@@ -45,7 +45,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Data de nascimento</label>
-                            <input class="form-control" type="date" id="date" name="dataDeNascimento"/>
+                            <input class="form-control" type="date" id="date" name="dataDeNascimento" max=""/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cpfCnpj">CPF/CNPJ</label>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cep">CEP</label>
-                            <input class="form-control" type="text" id="cep" name="cep" placeholder="Digite seu CEP"/>
+                            <input class="form-control" type="text" id="cep" name="cep" maxlength="9" placeholder="Digite seu CEP"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="city">Cidade</label>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="name">Data de nascimento</label>
-                            <input class="form-control" type="date" id="dateEditar" name="dataDeNascimento"/>
+                            <input class="form-control" type="date" id="dateEditar" name="dataDeNascimento" max=""/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cpfCnpj">CNPJ/CPF</label>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="cep">CEP</label>
-                            <input class="form-control" type="text" id="cepEditar" name="cep" placeholder="Digite seu CEP"/>
+                            <input class="form-control" type="text" id="cepEditar" name="cep" maxlength="9" placeholder="Digite seu CEP"/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="city">Cidade</label>

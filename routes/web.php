@@ -12,12 +12,17 @@
 */
 
 Auth::routes(['verify' => true]);
-Route::get('/', function(){
-    return redirect('/home');
+
+Route::middleware(['auth','verified'])->group(function () {
+    
+    Route::get('/', function(){
+        return redirect('/home');
+    });
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/cliente', 'ClientesController@index');
+    Route::put('/cliente/edit/{id}', 'ClientesController@update');
+    Route::get('/cliente/edit/{id}', 'ClientesController@edit');
+    Route::post('/cliente/create', 'ClientesController@store');
+    Route::delete('/cliente/delete/{id}', 'ClientesController@destroy');
+
 });
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/cliente', 'ClientesController@index');
-Route::put('/cliente/edit/{id}', 'ClientesController@update');
-Route::get('/cliente/edit/{id}', 'ClientesController@edit');
-Route::post('/cliente/create', 'ClientesController@store');
-Route::delete('/cliente/delete/{id}', 'ClientesController@destroy');
