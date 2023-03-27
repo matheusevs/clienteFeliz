@@ -4,6 +4,13 @@
 
 ### Instalação
 
+Clonar o projeto
+```
+git clone https://github.com/matheusevs/clienteFeliz.git
+```
+Entrar no projeto
+```
+cd clienteFeliz/
 ```
 Criar os arquivos .env
 ```
