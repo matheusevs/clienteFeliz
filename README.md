@@ -16,8 +16,7 @@ Criar os arquivos .env
 ```
 cp .env.example .env
 ```
-É importante reforçar que as variáveis com prefixo "mail" são fundamentais para o funcionamento adequado do projeto, especialmente no que se refere ao sistema de autenticação.
-```
+É importante reforçar que as variáveis com prefixo "mail" são fundamentais para o funcionamento adequado do projeto, especialmente no que se refere ao sistema de autenticação.</br></br>
 Instalação dos pacotes do composer
 ```
 composer install
@@ -34,4 +33,4 @@ Rodar comando para inicialização do servidor
 ```
 php artisan serve
 ```
-Após rodar todos os comandos, acesse a url [localhost](http://127.0.0.1:8000) para ter acesso a aplicação
+Após rodar todos os comandos, acesse a url [127.0.0.1:8000](http://127.0.0.1:8000) para ter acesso a aplicação
